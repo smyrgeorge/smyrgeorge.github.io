@@ -1,0 +1,48 @@
+<div class="event-list">
+ <div class="row">
+   <div class="[ col-xs-12 col-sm-offset-1 col-sm-11 ]">
+     <ul class="event-list">
+       <li>
+         <time datetime="{{ev.start_time.start_time}}">
+           <span class="day">{{ev.start_time.date.day}}</span>
+           <span class="month">{{ev.start_time.date.month_name}}</span>
+           <!-- <span class="year">2014</span> -->
+           <span class="time">{{ev.start_time.time.hour}}:{{ev.start_time.time.minute}}</span>
+         </time>
+         <img alt="" src="{{ev.picture.data.url}}" />
+         <div class="info">
+           <!-- <h2 class="title">{{event.name}}</h2> -->
+           <h2 class="title">{{ev.name}}</h2>
+           <p class="desc">{{ev.place.name}}</p>
+           <ul>
+             <li style="width:33%;">{{ev.attending_count}} <span class="glyphicon glyphicon-ok"></span></li>
+             <li style="width:34%;">{{ev.maybe_count}} <span class="fa fa-question"></span></li>
+             <!-- <li style="width:33%;">103 <span class="fa fa-envelope"></span></li> -->
+           </ul>
+         </div>
+         <div class="social">
+           <ul>
+             <li class="facebook" style="width:33%;"><a href="https://www.facebook.com/events/{{ev.id}}"><span class="fa fa-facebook"></span></a></li>
+             <!-- <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li> -->
+             <!-- <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li> -->
+           </ul>
+         </div>
+       </li>
+       <li class="event-details">
+           <div class="info" style="height:auto">
+                <p class="desc">{{ev.description}}</p>
+           </div>
+       </li>
+     </ul>
+
+
+     <!-- Google Maps -->
+     <div class="map-container-single">
+       <ui-gmap-google-map center="ev.place.location" zoom="map.zoom">
+         <ui-gmap-marker coords="ev.place.location" idkey="ev.id">
+         </ui-gmap-marker>
+       </ui-gmap-google-map>
+    </div>
+   </div>
+ </div>
+</div>

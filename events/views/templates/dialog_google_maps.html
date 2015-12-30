@@ -1,0 +1,20 @@
+<md-dialog aria-label="Map"  ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Map</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/ic_close.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="map-container-multiple">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" bounds="map.bounds">
+          <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
+          </ui-gmap-markers>
+        </ui-gmap-google-map>
+      </div>
+    </md-dialog-content>
+</md-dialog>
