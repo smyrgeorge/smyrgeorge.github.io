@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tag on :: exploration and stuff ::</title>
+    <link>https://smyrgeorge.github.io/tags/tag/</link>
+    <description>Recent content in tag on :: exploration and stuff ::</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 02 Jun 2023 00:51:32 +0200</lastBuildDate><atom:link href="https://smyrgeorge.github.io/tags/tag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://smyrgeorge.github.io/posts/test/</link>
+      <pubDate>Fri, 02 Jun 2023 00:51:32 +0200</pubDate>
+      
+      <guid>https://smyrgeorge.github.io/posts/test/</guid>
+      <description>Notes here&amp;hellip; </description>
+    </item>
+    
+  </channel>
+</rss>
