@@ -4,17 +4,16 @@
     <title>Posts on :: exploration and stuff ::</title>
     <link>https://smyrgeorge.github.io/posts/</link>
     <description>Recent content in Posts on :: exploration and stuff ::</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 02 Jun 2023 00:51:32 +0200</lastBuildDate><atom:link href="https://smyrgeorge.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Jul 2024 07:13:07 +0100</lastBuildDate>
+    <atom:link href="https://smyrgeorge.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>https://smyrgeorge.github.io/posts/test/</link>
-      <pubDate>Fri, 02 Jun 2023 00:51:32 +0200</pubDate>
-      
-      <guid>https://smyrgeorge.github.io/posts/test/</guid>
-      <description>Notes here&amp;hellip; </description>
+      <title>My First Post</title>
+      <link>https://smyrgeorge.github.io/posts/my-first-post/</link>
+      <pubDate>Sun, 07 Jul 2024 07:13:07 +0100</pubDate>
+      <guid>https://smyrgeorge.github.io/posts/my-first-post/</guid>
+      <description>This is my-first-post, just checking that everything works correctly.&#xA;fun main() { println(&amp;#34;Hello world!&amp;#34;) } </description>
     </item>
-    
   </channel>
 </rss>

@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
+
+
+
+
+
+
+
 
 
 
@@ -40,9 +47,9 @@
 
 
 <html
-  class="not-ready text-sm lg:text-base"
-  style="--bg: #faf6f1"
-  lang="en"
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
 >
   <head>
   <meta charset="utf-8" />
@@ -58,6 +65,7 @@
   
   <meta name="theme-color" />
 
+  
   
   
   
@@ -78,11 +86,13 @@
   <link rel="preload stylesheet" as="style" href="https://smyrgeorge.github.io/main.min.css" />
 
   
-
   
-   
+  
+  
+  
   <link rel="preload" as="image" href="https://smyrgeorge.github.io/theme.png" />
 
+  
   
   
   
@@ -91,9 +101,12 @@
   
 
   
+  
   <link rel="preload" as="image" href="https://smyrgeorge.github.io/github.svg" />
   
   <link rel="preload" as="image" href="https://smyrgeorge.github.io/instagram.svg" />
+  
+  <link rel="preload" as="image" href="https://smyrgeorge.github.io/linkedin.svg" />
   
   <link rel="preload" as="image" href="https://smyrgeorge.github.io/rss.svg" />
   
@@ -101,7 +114,12 @@
 
   
   
-  <link
+
+  
+  
+  
+  
+<link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
   integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
@@ -118,8 +136,23 @@
   src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
   integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
   crossorigin="anonymous"
-  onload="renderMathInElement(document.body);"
 ></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
 
   
   
@@ -130,57 +163,61 @@
   <link rel="apple-touch-icon" href="https://smyrgeorge.github.io/apple-touch-icon.png" />
 
   
-  <meta name="generator" content="Hugo 0.112.6">
+  <meta name="generator" content="Hugo 0.128.2">
 
   
   
+  
+  
+  
+
 
   
-  
-  
-  
-  
-  
-  
-  <meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://smyrgeorge.github.io/404.html" />
-
   
   <meta itemprop="name" content="404 Page not found">
-<meta itemprop="description" content="">
   
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
-<meta name="twitter:description" content=""/>
+  <meta property="og:url" content="https://smyrgeorge.github.io/404.html">
+  <meta property="og:site_name" content=":: exploration and stuff ::">
+  <meta property="og:title" content="404 Page not found">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
 
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="404 Page not found">
+
+  
+  
+  
+  <link rel="canonical" href="https://smyrgeorge.github.io/404.html" />
   
   
 </head>
 
   <body class="text-black duration-200 ease-out dark:text-white">
-    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
   <div class="relative z-50 mr-auto flex items-center">
     <a
-      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
       href="https://smyrgeorge.github.io/"
       >:: exploration and stuff ::</a
     >
     <div
-      class="btn-dark text-[0] ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
       role="button"
       aria-label="Dark"
     ></div>
   </div>
 
   <div
-    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
     role="button"
     aria-label="Menu"
   ></div>
 
   
+
   <script>
     
     const htmlClass = document.documentElement.classList;
@@ -196,7 +233,7 @@
 
     
     const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const lightBg = `"#faf6f1"`.replace(/"/g, '');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
     const setDark = (isDark) => {
       metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
       htmlClass[isDark ? 'add' : 'remove']('dark');
@@ -257,6 +294,16 @@
       
       <a
         class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/smyrgeorge"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./rss.svg)"
         href="https://smyrgeorge.github.io/index.xml"
         target="_blank"
@@ -272,7 +319,7 @@
 
 
     <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pb-24 pt-16 dark:prose-invert"
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
     >
       
 <h1
@@ -284,10 +331,10 @@
     </main>
 
     <footer
-  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
 >
   <div class="mr-auto">
-    &copy; 2023
+    &copy; 2024
     <a class="link" href="https://smyrgeorge.github.io/">:: exploration and stuff ::</a>
   </div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
@@ -298,7 +345,7 @@
     href="https://github.com/nanxiaobei/hugo-paper"
     rel="noopener"
     target="_blank"
-    >Theme Paper</a
+    >✎ Paper</a
   >
 </footer>
 
