@@ -1,0 +1,480 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Sqlx4k - A small introduction to the Kotlin native and FFI (Part 1) - :: exploration and stuff ::</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Introduction Recently, I started playing around with the Kotlin native platform. I started a new repository and I tried to create a simple project that uses the ktor libraries. The prepuse of the project was to re-create a small services that wires up some basic libraries and to compile it to a native target (macosArm64 in my case). The service I wanted to offer support for:
+Dependency injection Http server Database access (PostgreSQL) Also, RabbitMQ support (but it isn&rsquo;t priority for now) Ktor I found that is very easy to start a new project with Ktor." />
+  <meta name="author" content="Yorgos S." />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://cdn.v2ex.com/gravatar/8245941d1283a013d21bc7c2485c344a?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/github.svg" />
+  
+  <link rel="preload" as="image" href="http://localhost:1313/instagram.svg" />
+  
+  <link rel="preload" as="image" href="http://localhost:1313/linkedin.svg" />
+  
+  <link rel="preload" as="image" href="http://localhost:1313/rss.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="http://localhost:1313/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.128.2">
+
+  
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="http://localhost:1313/"
+      >:: exploration and stuff ::</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/smyrgeorge"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./instagram.svg)"
+        href="https://instagram.com/smyrgeorge"
+        target="_blank"
+        rel="me"
+      >
+        instagram
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/smyrgeorge"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="http://localhost:1313/index.xml"
+        target="_blank"
+        rel="alternate"
+      >
+        rss
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Sqlx4k - A small introduction to the Kotlin native and FFI (Part 1)</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Jul 8, 2024</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yorgos S.</span>
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="introduction">Introduction</h2>
+<p>Recently, I started playing around with the <strong>Kotlin native platform</strong>.
+I started a new repository and I tried to create a simple project that uses the <code>ktor</code> libraries. The prepuse of the project was to re-create a small services that wires up some basic libraries and to compile it to a native target (macosArm64 in my case). The service I wanted to offer support for:</p>
+<ul>
+<li>Dependency injection</li>
+<li>Http server</li>
+<li>Database access (PostgreSQL)</li>
+<li>Also, RabbitMQ support (but it isn&rsquo;t priority for now)</li>
+</ul>
+<h2 id="ktor">Ktor</h2>
+<p>I found that is very easy to start a new project with Ktor. I started from <a href="https://start.ktor.io/settings">Ktor: Project generator</a> and I created a sample project.</p>
+<p>Then I only had to change a bit the the <strong>build.gradle.kts</strong> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>plugins {
+</span></span><span style="display:flex;"><span>    kotlin(<span style="color:#e6db74">&#34;multiplatform&#34;</span>) version <span style="color:#e6db74">&#34;2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>repositories {
+</span></span><span style="display:flex;"><span>    mavenCentral()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>group = <span style="color:#e6db74">&#34;io.github.smyrgeorge&#34;</span>
+</span></span><span style="display:flex;"><span>version = <span style="color:#e6db74">&#34;0.1.0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> ktorVersion = <span style="color:#e6db74">&#34;3.0.0-beta-1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> koinVersion = <span style="color:#e6db74">&#34;3.5.6&#34;</span>
+</span></span><span style="display:flex;"><span>kotlin {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Enable the according to your platform (you can enable them all):
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    macosArm64 { binaries { executable() } }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// linuxX64 { binaries { executable() } }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// linuxX64 { binaries { executable() } }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    applyDefaultHierarchyTemplate()
+</span></span><span style="display:flex;"><span>    sourceSets {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> nativeMain <span style="color:#66d9ef">by</span> getting {
+</span></span><span style="display:flex;"><span>            dependencies {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Ktor with CIO
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                implementation(<span style="color:#e6db74">&#34;io.ktor:ktor-server-cio:</span><span style="color:#e6db74">$ktorVersion</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Koin (DI)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                implementation(<span style="color:#e6db74">&#34;io.insert-koin:koin-core:</span><span style="color:#e6db74">$koinVersion</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Database driver
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                implementation(<span style="color:#e6db74">&#34;io.github.smyrgeorge:sqlx4k:0.4.0&#34;</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And then I changed the <strong>main</strong> function to be like the default example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    embeddedServer(CIO, port = <span style="color:#ae81ff">8080</span>) {
+</span></span><span style="display:flex;"><span>        routing {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span> (<span style="color:#e6db74">&#34;/&#34;</span>) {
+</span></span><span style="display:flex;"><span>                call.respondText(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }.start(wait = <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then I build the project with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./gradlew build
+</span></span></code></pre></div><p>And finally, I started my sample service (ktor-native-sample):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>./build/bin/macosArm64/releaseExecutable/ktor-native-sample.kexe
+</span></span></code></pre></div><p>And I then I saw the following logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[INFO] (io.ktor.server.Application): Application started in 0.0 seconds.
+</span></span><span style="display:flex;"><span>[INFO] (io.ktor.server.Application): Responding at http://0.0.0.0:8080
+</span></span></code></pre></div><p>As we can see, the startup time was less than a second (some milliseconds I guess), and I think this is the interesting part. Also, I have to mention that the memory usage was around <strong>~5Mb</strong>.</p>
+<h2 id="a-little-bit-of-the-background">A little bit of the background.</h2>
+<p>So, the thing is that the last couple of years I have written a lot of projects using the spring-boot stack (but with kotlin). I guess we all know about the very slow start-up times of the JVM based applications and of course the memory consumption (~50Mb at start up).</p>
+<p>Of course, people that come from other stacks (eg. rust, or something else) probably are laughing right now.. The thing is that almost agree with that. But of course sometimes it&rsquo;s difficult to turn from one side to another.</p>
+<p>For example, I&rsquo;m working for the same company almost 9 years now, and during this period with my team we&rsquo;ve implemented a lot of stuff. Almost from the beginning we went with the spring-boot (kotlin) stack. And I thing it served us very well. To be honest I like a lot the kotlin language and also it has aged very good also. Just to give an example, we have a very large (also complex) insurance project and we managed to migrate almost the whole project to kotlin-async (coroutines) in 5-6 months.</p>
+<h2 id="sqlx4k">Sqlx4k</h2>
+<p>So, I started to look around for the libraries that support multiplatform and specifically the native platform (e.g. to be compiled for linuxArm64). Very quickly I realised that the ecosystem is in a very early stage. So, I thought that I can write some libraries myself. The most necessary part of the kind of application that my team builds the last years is the access to the database, and specifically to the PostgreSQL database. But, (until now) there is no native driver at the moment (or at least I couldn&rsquo;t find it), so I started thinking to make one. Very quickly I realised that is not a very easy task, and also while I was searching around, I saw that there some small projects that wrap the <strong>libpq</strong> (the oficial <code>C</code> database client) library using FFI.</p>
+<p>Also, I forgot to mention that the last years, in several side-projects, I used the Rust programming language. So, I thought that maybe I can attempt to wrap one of the rust database driver. I went with the <strong>sqlx</strong> because I had use it in the past.</p>
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://kotlinlang.org/">Kotlin Programming Language</a></li>
+<li><a href="https://ktor.io/">Ktor: Build Asynchronous Servers and Clients in Kotlin | Ktor Framework</a></li>
+<li><a href="https://github.com/launchbadge/sqlx">GitHub - launchbadge/sqlx: 🧰 The Rust SQL Toolkit. An async, pure Rust SQL crate featuring compile-time checked queries without a DSL. Supports PostgreSQL, MySQL, and SQLite.</a></li>
+</ul>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="http://localhost:1313/tags/dev"
+      >dev</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="http://localhost:1313/tags/kotlin"
+      >kotlin</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="http://localhost:1313/tags/ffi"
+      >ffi</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="http://localhost:1313/tags/rust"
+      >rust</a
+    >
+    
+  </footer>
+  
+
+  
+  
+
+  
+  
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = 'smyrgeorge';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="http://localhost:1313/">:: exploration and stuff ::</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

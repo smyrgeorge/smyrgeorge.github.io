@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on :: exploration and stuff ::</title>
-    <link>https://smyrgeorge.github.io/posts/</link>
-    <description>Recent content in Posts on :: exploration and stuff ::</description>
+    <title>Dev on :: exploration and stuff ::</title>
+    <link>https://smyrgeorge.github.io/categories/dev/</link>
+    <description>Recent content in Dev on :: exploration and stuff ::</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Jul 2024 13:26:07 +0200</lastBuildDate>
-    <atom:link href="https://smyrgeorge.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://smyrgeorge.github.io/categories/dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sqlx4k - Introduction to the Kotlin native and FFI (Part 1)</title>
       <link>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-1/</link>
       <pubDate>Mon, 08 Jul 2024 13:26:07 +0200</pubDate>
       <guid>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-1/</guid>
       <description>Introduction Recently, I began experimenting with the Kotlin Native platform. I initiated a new repository and attempted to create a simple project utilizing the ktor libraries. The purpose of the project was to recreate a small service that integrates some basic libraries and compile it to a native target (macosArm64 in my case). The service aimed to offer support for:&#xA;Dependency injection HTTP server Database access (PostgreSQL) Additionally, RabbitMQ support (though it isn&amp;rsquo;t a priority for now) In this first article of the series, I aim to describe how I ended up writing &amp;ldquo;low-level&amp;rdquo; code (FFI between Kotlin and Rust) and also to highlight the importance of native compatibility in Kotlin Native.</description>
-    </item>
-    <item>
-      <title>My First Post</title>
-      <link>https://smyrgeorge.github.io/posts/my-first-post/</link>
-      <pubDate>Sun, 07 Jul 2024 07:13:07 +0100</pubDate>
-      <guid>https://smyrgeorge.github.io/posts/my-first-post/</guid>
-      <description>This is my-first-post, just checking that everything works correctly.&#xA;fun main() { println(&amp;#34;Hello world!&amp;#34;) } </description>
     </item>
   </channel>
 </rss>
