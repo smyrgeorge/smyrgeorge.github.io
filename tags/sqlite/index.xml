@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Sqlite on :: exploration and stuff ::</title>
     <link>https://smyrgeorge.github.io/tags/sqlite/</link>
     <description>Recent content in Sqlite on :: exploration and stuff ::</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
+    <generator>Hugo -- 0.128.2</generator>
+    <language>en</language>
     <lastBuildDate>Mon, 08 Jul 2024 13:26:07 +0200</lastBuildDate>
     <atom:link href="https://smyrgeorge.github.io/tags/sqlite/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -13,7 +13,8 @@
       <link>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-1/</link>
       <pubDate>Mon, 08 Jul 2024 13:26:07 +0200</pubDate>
       <guid>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-1/</guid>
-      <description>Introduction Recently, I began experimenting with the Kotlin Native platform. I initiated a new repository and attempted to create a simple project utilizing the ktor libraries. The purpose of the project was to recreate a small service that integrates some basic libraries and compile it to a native target (macosArm64 in my case). The service aimed to offer support for:&#xA;Dependency injection HTTP server Database access (PostgreSQL) Additionally, RabbitMQ support (though it isn&amp;rsquo;t a priority for now) In this first article of the series, I aim to describe how I ended up writing &amp;ldquo;low-level&amp;rdquo; code (FFI between Kotlin and Rust) and also to highlight the importance of native compatibility in Kotlin Native.</description>
+      <description>Introduction Recently, I began experimenting with the Kotlin Native platform. I initiated a new repository and attempted to create a simple project utilizing the ktor libraries. The purpose of the project was to recreate a small service that integrates some basic libraries and compile it to a native target (macosArm64 in my case). The service aimed to offer support for:
+Dependency injection HTTP server Database access (PostgreSQL) Additionally, RabbitMQ support (though it isn&amp;rsquo;t a priority for now) In this first article of the series, I aim to describe how I ended up writing &amp;ldquo;low-level&amp;rdquo; code (FFI between Kotlin and Rust) and also to highlight the importance of native compatibility in Kotlin Native.</description>
     </item>
   </channel>
 </rss>
