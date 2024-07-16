@@ -6,8 +6,16 @@
     <description>Recent content in Rust on :: exploration and stuff ::</description>
     <generator>Hugo -- 0.128.2</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Jul 2024 13:26:07 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2024 20:11:34 +0200</lastBuildDate>
     <atom:link href="https://smyrgeorge.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sqlx4k - Introduction to the Kotlin native and FFI (Part 2)</title>
+      <link>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-2/</link>
+      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
+      <guid>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-2/</guid>
+      <description>Introduction In the previous part of this series, I attempted to explain the importance of the Kotlin FFI (Foreign Function Interface) compatibility layer. As I mentioned, I believe it is a very effective way (at least for now) to leverage other ecosystems (such as the Rust ecosystem) to bring functionality to the Kotlin/Native ecosystem, in which I see a great deal of potential.
+FFI Foreign Function Interface (FFI) is a programming feature that enables code written in one language to call and interact with code written in another language.</description>
+    </item>
     <item>
       <title>Sqlx4k - Introduction to the Kotlin native and FFI (Part 1)</title>
       <link>https://smyrgeorge.github.io/posts/sqlx4k---introduction-to-the-kotlin-native-and-ffi-part-1/</link>
