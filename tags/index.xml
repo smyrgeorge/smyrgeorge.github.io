@@ -6,34 +6,41 @@
     <description>Recent content in Tags on :: exploration and stuff ::</description>
     <generator>Hugo -- 0.130.0</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Jul 2024 20:11:34 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2024 17:19:17 +0200</lastBuildDate>
     <atom:link href="https://smyrgeorge.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Database-Driver</title>
-      <link>https://smyrgeorge.github.io/tags/database-driver/</link>
-      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
-      <guid>https://smyrgeorge.github.io/tags/database-driver/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Dev</title>
       <link>https://smyrgeorge.github.io/tags/dev/</link>
-      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
+      <pubDate>Thu, 01 Aug 2024 17:19:17 +0200</pubDate>
       <guid>https://smyrgeorge.github.io/tags/dev/</guid>
       <description></description>
     </item>
     <item>
       <title>Ffi</title>
       <link>https://smyrgeorge.github.io/tags/ffi/</link>
-      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
+      <pubDate>Thu, 01 Aug 2024 17:19:17 +0200</pubDate>
       <guid>https://smyrgeorge.github.io/tags/ffi/</guid>
       <description></description>
     </item>
     <item>
       <title>Kotlin</title>
       <link>https://smyrgeorge.github.io/tags/kotlin/</link>
-      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
+      <pubDate>Thu, 01 Aug 2024 17:19:17 +0200</pubDate>
       <guid>https://smyrgeorge.github.io/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://smyrgeorge.github.io/tags/rust/</link>
+      <pubDate>Thu, 01 Aug 2024 17:19:17 +0200</pubDate>
+      <guid>https://smyrgeorge.github.io/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database-Driver</title>
+      <link>https://smyrgeorge.github.io/tags/database-driver/</link>
+      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
+      <guid>https://smyrgeorge.github.io/tags/database-driver/</guid>
       <description></description>
     </item>
     <item>
@@ -48,13 +55,6 @@
       <link>https://smyrgeorge.github.io/tags/postgres/</link>
       <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
       <guid>https://smyrgeorge.github.io/tags/postgres/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rust</title>
-      <link>https://smyrgeorge.github.io/tags/rust/</link>
-      <pubDate>Tue, 16 Jul 2024 20:11:34 +0200</pubDate>
-      <guid>https://smyrgeorge.github.io/tags/rust/</guid>
       <description></description>
     </item>
     <item>
